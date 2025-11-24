@@ -1,0 +1,221 @@
+/* 🌿 Right Panel Theme */
+:root {
+  --panel-bg: #f9fbf9;
+  --panel-border: #d6e9d6;
+  --header-bg-start: #2472c5;
+  --header-bg-end: #215e9e;
+  --header-text: #ffffff;
+  --text-primary: #063970;
+  --text-secondary: #34495e;
+  --accent-color: #063970;
+  --hover-color: #4489d2;
+  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==============================
+   PANEL WRAPPER
+================================ */
+.right-panel {
+  position: fixed;
+  top: 70px;
+  right: -340px;
+  width: 320px;
+  height: calc(100% - 70px);
+  background: var(--panel-bg);
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid var(--panel-border);
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  transition: right var(--transition);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+body.rb-sidenav-toggled-right .right-panel {
+  right: 0;
+}
+
+/* ==============================
+   HEADER
+================================ */
+.panel-header {
+  background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+  color: var(--header-text);
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#panel-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ==============================
+   CLOSE BUTTON
+================================ */
+#right-panel-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+}
+
+#right-panel-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg) scale(1.15);
+}
+
+/* ==============================
+   CONTENT
+================================ */
+.panel-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+  animation: fadeIn 0.4s ease;
+}
+
+.panel-content::-webkit-scrollbar {
+  width: 6px;
+}
+.panel-content::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+
+/* ==============================
+   LIST STYLING
+================================ */
+.panel-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel-content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #edf2f0;
+  font-size: 0.92rem;
+  transition: background 0.25s ease, transform 0.2s ease;
+  border-radius: 6px;
+}
+
+.panel-content li:hover {
+  background: rgba(45,106,79,0.08);
+  transform: translateX(4px);
+}
+
+.panel-content li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.panel-content .value {
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* ==============================
+   MEDIA THUMBNAILS
+================================ */
+.thumb-hover {
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.thumb-hover:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+/* ==============================
+   TOGGLE BUTTON
+================================ */
+.right-panel-toggle {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+  border: none;
+  color: #fff;
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: -3px 3px 12px rgba(0,0,0,0.2);
+  z-index: 10000;
+}
+
+.right-panel-toggle:hover {
+  background: var(--hover-color);
+  box-shadow: -4px 4px 16px rgba(0,0,0,0.3);
+}
+
+body.rb-sidenav-toggled-right .right-panel-toggle {
+  right: 320px;
+}
+
+/* ==============================
+   ANIMATIONS
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+
+
+/* Modal image wrapper */
+.modal-carousel-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 70vh;
+}
+
+/* Images and videos inside modal */
+.modal-carousel-img {
+  max-width: 80%;
+  max-height: 70vh;
+  transition: transform 0.25s ease;
+  will-change: transform;
+  user-select: none;
+  cursor: grab;
+}
+
+
+.rotate-btn {
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.35rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.rotate-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
